@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./CatsGallery.css";
 
 const catsMock = [
   {
@@ -49,7 +48,6 @@ const CatsGallery = () => {
 
   return (
     <div className="gallery">
-      <h1 className="title">Cats gallery</h1>
       <ul className="list">
         {cats.map((cat) => (
           <li key={cat.id} className="listItem">
