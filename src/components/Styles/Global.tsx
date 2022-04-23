@@ -8,7 +8,7 @@ export const Row = styled.div`
 
 export const Column = styled.div`
     display: flex;
-    flex-direction: center;
+    flex-direction: column;
     justify-content: center;
     align-items:center;
 `
@@ -19,6 +19,7 @@ export const Title = styled.h1`
 
 export const List = styled.ul`
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     list-style: none;
@@ -40,4 +41,10 @@ export const Image = styled.img`
     width: 100%;
     height: 300px;
     object-fit: cover;
+`
+export const Text = styled.span`
+    font-size: 20px;
+    font-weight: 900;
+    padding-bottom: 10px;
+    text-align: center;
 `
