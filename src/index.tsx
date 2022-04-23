@@ -1,5 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import CatsGallery from "./CatsGallery";
+import App from "./App";
 
-ReactDOM.render(<CatsGallery />, document.getElementById("root"));
+ReactDOM.render(
+    <React.StrictMode>
+        <App/>
+    </React.StrictMode>,
+    document.getElementById("root")
+);
