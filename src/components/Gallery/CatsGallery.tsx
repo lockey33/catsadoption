@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Row, Column, List, ListItem, Image } from "../Styles/Global";
+import {useTheme} from "styled-components";
 
 const catsMock = [
   {
@@ -45,17 +47,16 @@ const CatsGallery = () => {
   // data from the endpoint provided in the README.md instead.
   // Tip: you can use the fetch api (https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
   const [cats] = useState(catsMock);
-
+  const theme = useTheme();
+  console.log(theme);
   return (
-    <div className="gallery">
-      <ul className="list">
+      <List>
         {cats.map((cat) => (
-          <li key={cat.id} className="listItem">
-            <img src={cat.picturePath} alt={cat.name} />
-          </li>
+          <ListItem theme={theme} key={cat.id}>
+            <Image src={cat.picturePath} alt={cat.name} />
+          </ListItem>
         ))}
-      </ul>
-    </div>
+      </List>
   );
 };
 

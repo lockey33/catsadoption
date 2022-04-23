@@ -1,5 +1,5 @@
 import React from "react";
-import CatsGallery from "../components/gallery/CatsGallery";
+import CatsGallery from "../components/Gallery/CatsGallery";
 
 const Home = () => {
     return (
