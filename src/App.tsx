@@ -1,8 +1,10 @@
 import React from "react";
+import {ThemeProvider} from 'styled-components';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Home from "./pages/Home";
 import Header from "./components/Header/Index";
-import {ThemeProvider} from 'styled-components';
+import CatsDetails from "./components/Details/CatsDetails";
+import { ModalProvider} from "styled-react-modal";
 
 const theme = {
     breakpoints: {
@@ -18,10 +20,13 @@ const App = () => {
     return (
         <Router>
             <ThemeProvider theme={theme}>
-                <Header/>
-                <Routes>
-                    <Route path="/" element={<Home/>}/>
-                </Routes>
+                <ModalProvider>
+                    <Header/>
+                    <Routes>
+                        <Route path="/" element={<Home/>}/>
+                        <Route path="/details/:id" element={<CatsDetails/>}/>
+                    </Routes>
+                </ModalProvider>
             </ThemeProvider>
         </Router>
     )

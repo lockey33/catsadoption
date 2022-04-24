@@ -1,11 +1,11 @@
 import React from "react";
-import { Row, Title } from "../Styles/Global";
+import {CenteredRow, Title} from "../Styles/Global";
 
 const Header = () => {
     return(
-        <Row>
+        <CenteredRow>
             <Title>Cats gallery</Title>
-        </Row>
+        </CenteredRow>
     )
 }
 

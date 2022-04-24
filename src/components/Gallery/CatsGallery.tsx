@@ -1,30 +1,25 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import { Column, List, ListItem, Image, Text } from "../Styles/Global";
 import { useTheme } from "styled-components";
-import axios from "axios";
+import useCats from "../../hooks/useCats";
+import Cat from "../../interfaces/Cat";
+import { useNavigate } from "react-router-dom";
+
 
 const CatsGallery = () => {
-  const theme = useTheme();
-  const [cats, setCats] = useState([]);
-  const catsUrl = "https://europe-west1-matters-test.cloudfunctions.net/getCats";
 
-  const fetchCats = async() => {
-    try{
-      const query = await axios.get(catsUrl);
-      const fetchedCats = query.data;
-      setCats(fetchedCats);
-    }catch(err){
-      console.log(err)
+    const cats = useCats({wantedCat: undefined});
+    const theme = useTheme();
+    const navigate = useNavigate();
+
+    async function handleClick(id: Number) {
+        navigate('details/' + id)
     }
-  }
-  useEffect(() => {
-    fetchCats();
-  },[])
 
   return (
       <List>
-        {cats && cats.map((cat:any) => (
-          <ListItem theme={theme} key={cat.id}>
+        {cats && cats.map((cat: Cat) => (
+          <ListItem onClick={() => handleClick(cat.id)} theme={theme} key={cat.id}>
             <Column>
               <Text>{cat.name}</Text>
               <Image src={cat.picturePath} alt={cat.name} />
