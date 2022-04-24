@@ -1,36 +1,41 @@
-import {useEffect, useState} from "react";
+import {useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import Cat from "../interfaces/Cat";
+import FetchOptions from "../interfaces/FetchOptions";
 
-interface Options {
-    wantedCat: number
-}
 
-const useCats = (options: Options) => {
+const useCats = (options: FetchOptions) => {
     const catsUrl = "https://europe-west1-matters-test.cloudfunctions.net/getCats";
-    const [cats, setCats] = useState([]);
+    const [data, setData] = useState(null);
+    const [isSubscribed, setIsSubscribed] = useState(true);
 
-    const fetchCats = async() => {
+    const fetchCats = useCallback(async() => {
         try{
             const query = await axios.get(catsUrl);
             const fetchedCats = query.data;
-            if(options.hasOwnProperty("wantedCat") && options.wantedCat){ // for one cat details
-                const wantedCat = fetchedCats.find((c: Cat) =>  Number(c.id) === Number(options.wantedCat))
-                setCats(wantedCat);
-            }else{
-                setCats(fetchedCats);
+            if(isSubscribed){
+                if(options.hasOwnProperty("wantedCat") && options.wantedCat){ // for one cat details
+                    const wantedCat = fetchedCats.find((c: Cat) =>  Number(c.id) === Number(options.wantedCat))
+                    setData(wantedCat);
+                }else{
+                    setData(fetchedCats);
+                }
             }
-
         }catch(err){
             console.log(err)
+            return err
         }
-    }
+    }, [])
 
-    useEffect(() => {
+    useEffect( () => {
         fetchCats();
-    })
+        // cleanup function to avoid react lifecycle testing errors
+        return () => {
+            setIsSubscribed(false);
+        }
+    }, [fetchCats]);
 
-    return cats
+    return { data, fetchCats }
 }
 
 export default useCats;

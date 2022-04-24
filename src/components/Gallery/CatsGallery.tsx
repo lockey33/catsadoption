@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const CatsGallery = () => {
 
-    const cats = useCats({wantedCat: undefined});
+    const { data } = useCats({wantedCat: undefined});
     const theme = useTheme();
     const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ const CatsGallery = () => {
 
   return (
       <List>
-        {cats && cats.map((cat: Cat) => (
+        {data && data.map((cat: Cat) => (
           <ListItem onClick={() => handleClick(cat.id)} theme={theme} key={cat.id}>
             <Column>
               <Text>{cat.name}</Text>
