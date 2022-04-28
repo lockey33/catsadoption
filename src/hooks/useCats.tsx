@@ -1,4 +1,4 @@
-import {useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import Cat from "../interfaces/Cat";
 import FetchOptions from "../interfaces/FetchOptions";
@@ -9,7 +9,7 @@ const useCats = (options: FetchOptions) => {
     const [data, setData] = useState(null);
     const [isSubscribed, setIsSubscribed] = useState(true);
 
-    const fetchCats = useCallback(async() => {
+    const fetchCats = useCallback(async () => {
         try{
             const query = await axios.get(catsUrl);
             const fetchedCats = query.data;
@@ -25,7 +25,7 @@ const useCats = (options: FetchOptions) => {
             console.log(err)
             return err
         }
-    }, [])
+    }, [data, isSubscribed])
 
     useEffect( () => {
         fetchCats();
