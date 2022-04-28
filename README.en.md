@@ -1,5 +1,3 @@
-# Cats adoption project (Frontend technical exercise) <a href="./README.md">Version française</a>
-
 ## Project setup
 
 ### Requirements
@@ -27,6 +25,3 @@ The page will reload if you make edits.
 
 Launches the test runner in the interactive watch mode.
 
-## Start
-
-**Now that you are ready, let's explore exercise's specifications [here](./SPECIFICATIONS.en.md).**

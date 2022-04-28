@@ -1,5 +1,3 @@
-# Projet d'adoption de chats (Exercice technique front) <a href="./README.en.md">English version</a>
-
 ## Procédure d'installation
 
 ### Prérequis
@@ -25,7 +23,3 @@ La page se recharge à chaque modification.
 - `yarn test` (ou `npm test`)
 
 Lance le gestionnaire de tests en mode interactif.
-
-## Commencer l'exercice
-
-**Maintenant que vous êtes prêt(e), vous pouvez consulter les consignes de l'exercice [ici](./SPECIFICATIONS.md).**
